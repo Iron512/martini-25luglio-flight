@@ -40,15 +40,11 @@ app.get('/flights/*', function(req, res){
 
   	var list = getFlights(airportCode,selector)
 
-  	if (list[0] != -1) {
-		res.writeHead(200)
-		res.write(list)
-		res.end()
-  	} else {
-  		res.writeHead(400)
-		res.write("bad request - wrong selector")
-		res.end()
-  	}
+  	//fix
+	res.writeHead(200)
+	res.write(list)
+	res.end()
+
   }
 });
 
