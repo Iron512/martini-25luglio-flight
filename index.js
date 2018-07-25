@@ -23,7 +23,7 @@ app.get('/', function(req, res){
 
 //flight list routing
 app.get('/flights', function(req, res){
-  console.log("request on " + req.url " - sending all flights info")
+  console.log("request on " + req.url + " - sending all flights info")
   console.log(req.url)
 
   res.writeHead(200);
