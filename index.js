@@ -42,7 +42,7 @@ app.get('/flights/*', function(req, res){
 
   	//fix
 	res.writeHead(200)
-	res.write(list)
+	res.json(list)
 	res.end()
 
   }
