@@ -1,5 +1,5 @@
 const http = require('http')
-const bodyParser = require('body-parser')
+//const bodyParser = require('body-parser')
 
 http.createServer(function(req,res) {
 	console.log("Got a request, fullfilling it")
