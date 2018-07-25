@@ -7,7 +7,8 @@ var app = express()
 var flights = [
 			{code:'SQ388',departureAirport:'MXP',arrivalAirport:'JFK',delay:37},
 			{code:'UA928',departureAirport:'JAL',arrivalAirport:'EGS',delay:53},
-			{code:'GV473',departureAirport:'RBJ',arrivalAirport:'VRE',delay:21}
+			{code:'GV473',departureAirport:'RBJ',arrivalAirport:'VRE',delay:21},
+			{code:'UL871',departureAirport:'MXP',arrivalAirport:'EGS',delay:21}
 			]
 
 
@@ -28,18 +29,57 @@ app.get('/flights/*', function(req, res){
 
   var splitted = req.url.split("/");
 
-  console.log(splitted)
-  
-  res.writeHead(200);
-  res.write('It works! flights')
-  res.end();
+  if (splitted.length != 4) {
+  	res.writeHead(400)
+  	res.write("bad request - wrong url form")
+  	res.end()
+  } else {
+  	//well formed request
+  	airportCode = splitted[2]
+  	selector = splitted[3]
+
+  	var list = getFlights(airportCode,selector)
+
+  	if (list[1] != -1) {
+		res.writeHead(200)
+		res.write(list)
+		res.end()
+  	} else {
+  		res.writeHead(400)
+		res.write("bad request - wrong selector")
+		res.end()
+  	}
+  }
 });
 
 //flight info routing
-app.get('/flightInfo', function(req, res){
-  res.writeHead(200);
-  res.write('It works! flight Info')
-  res.end();
+app.get('/flightInfo/*', function(req, res){
+  console.log("request on " + req.url + " - sending flight info")
+  console.log(req.url)
+
+  var splitted = req.url.split("/");
+
+  if (splitted.length != 3) {
+  	res.writeHead(400)
+  	res.write("bad request - wrong url form")
+  	res.end()
+  } else {
+  	//well formed request
+  	code = splitted[2]
+
+
+  	var obj = getFlightInfo(code)
+
+  	if (obj != -1) {
+		res.writeHead(200)
+		res.write(list)
+		res.end()
+  	} else {
+  		res.writeHead(404)
+		res.write("flight not found")
+		res.end()
+  	}
+  }
 });
 
 //insert a flight
@@ -50,3 +90,55 @@ app.post('/flights', function(req, res){
 });
 
 http.createServer(app).listen(process.env.PORT || 80);
+
+
+
+//functions
+function getFlights(airportCode,selector) {
+  	var list = []
+
+	if (selector == "departure") {
+  		//departure
+
+		for (var i = flights.length - 1; i >= 0; i--) {
+			if (flights[i].departureAirport == airportCode) {
+				list.push(flights[i].code)
+			}
+		}
+  	} else if (selector == "arrival") {
+  		//arrival
+
+		for (var i = flights.length - 1; i >= 0; i--) {
+			if (flights[i].arrivalAirport == airportCode) {
+				list.push(flights[i].code)
+			}
+		}
+
+  	} else {
+  		//wrong selector
+  		var list = [-1]
+  	}
+
+  	return list
+}
+
+function getFlightInfo(codeS) {
+	var found = -1
+
+	for (var i = flights.length - 1; i >= 0; i--) {
+		if (flights[i].code == codeS) {
+			found = i
+		}
+	}
+
+	if (found == -1) {
+		return -1
+	} else {
+		return {
+			departureAirport: flights[found].departureAirport,
+			arrivalAirport: flights[found].arrivalAirport,
+			delay: flights[found].delay
+
+		}
+	}
+}
