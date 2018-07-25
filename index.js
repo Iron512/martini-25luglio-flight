@@ -26,6 +26,10 @@ app.get('/flights/*', function(req, res){
   console.log("request on " + req.url + " - sending all flights info")
   console.log(req.url)
 
+  var splitted = req.url.split("/");
+
+  console.log(splitted)
+  
   res.writeHead(200);
   res.write('It works! flights')
   res.end();
