@@ -42,7 +42,7 @@ app.get('/flights/*', function(req, res){
 
   	//fix
 	res.writeHead(200)
-	res.body.write(list)
+	res.body.write(JSON.stringify(list))
 	res.end()
 
   }
@@ -68,7 +68,7 @@ app.get('/flightInfo/*', function(req, res){
 
   	if (obj != -1) {
 		res.writeHead(200)
-		res.write("XD")
+		res.write(JSON.stringify(obj))
 		res.end()
   	} else {
   		res.writeHead(404)
