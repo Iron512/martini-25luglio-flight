@@ -1,0 +1,19 @@
+{
+  "name": "martini-25luglio-flight",
+  "version": "1.0.0",
+  "description": "trentose2 course exam",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iron512/martini-25luglio-flight.git"
+  },
+  "author": "iron512",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Iron512/martini-25luglio-flight/issues"
+  },
+  "homepage": "https://github.com/Iron512/martini-25luglio-flight#readme"
+}
