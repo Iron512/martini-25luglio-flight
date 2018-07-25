@@ -1,10 +1,12 @@
 const http = require('http')
-//const bodyParser = require('body-parser')
+const express = require('express')
 
-http.createServer(function(req,res) {
-	console.log("Got a request, fullfilling it")
-	res.writeHead(200)
-	res.write('Hello World!')
-	res.end()
-	console.log("All good")
-}).listen(process.env.PORT || 80);
+var app = express()
+
+app.get('/', function(req, res){
+  res.writeHead(200);
+  res.write('It works! Express')
+  res.end();
+});
+
+http.createServer(app).listen(process.env.PORT || 80);

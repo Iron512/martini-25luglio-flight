@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Iron512/martini-25luglio-flight/issues"
   },
-  "homepage": "https://github.com/Iron512/martini-25luglio-flight#readme"
+  "homepage": "https://github.com/Iron512/martini-25luglio-flight#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
