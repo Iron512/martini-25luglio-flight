@@ -5,21 +5,27 @@ HOST: https://martini-25luglio-flight.herokuapp.com/
 
 flightAPI is an api to get infos about flights
 
-## All Flights [/flights/]
+## All Flights Info [/flights/{airportCode}/{selector}]
 
 You might request an airport code and the selector (departure or arrival) that you want to get the flight code of each plane landing or taking off from that specific airport
 ### List All Flights from an Airport [GET]
 
-
++ Parameters
+    + airportCode (string) - the code of the airport
+    + selector (string) - "departure" or "arrival"
+    
 + Response 200 (application/json)
 
         [
             "UL871","SQ388"
         ]
 
-## Flight Info [/flightInfo/]
+## Flight Info [/flightInfo/{flightCode}]
 You might request the information about a specific flight, if you know the flight code
 ### List the information about a specific flight [GET]
+
++ Parameters
+    + flightCode (string) - the code of the flight
 
 + Response 200 (application/json)
 
