@@ -42,7 +42,7 @@ app.get('/flights/*', function(req, res){
 
   	//fix
 	res.writeHead(200)
-	res.body.write(JSON.stringify(list))
+	res.write(JSON.stringify(list))
 	res.end()
 
   }
