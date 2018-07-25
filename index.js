@@ -14,15 +14,15 @@ var flights = [
 //homepage routing
 app.get('/', function(req, res){
   res.writeHead(200);
-  res.write('It works!')
-  res.write('require with /flights/airportCode/selector all the flights')
-  res.write('require with /flightInfo/flightCode all the info for that flight')
-  res.write('post request with /flights to insert a flight')
+  res.write('It works!<br>')
+  res.write('require with /flights/airportCode/selector all the flights<br>')
+  res.write('require with /flightInfo/flightCode all the info for that flight<br>')
+  res.write('post request with /flights to insert a flight<br>')
   res.end();
 });
 
 //flight list routing
-app.get('/flights', function(req, res){
+app.get('/flights/*', function(req, res){
   console.log("request on " + req.url + " - sending all flights info")
   console.log(req.url)
 
