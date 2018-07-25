@@ -40,7 +40,7 @@ app.get('/flights/*', function(req, res){
 
   	var list = getFlights(airportCode,selector)
 
-  	if (list[1] != -1) {
+  	if (list[0] != -1) {
 		res.writeHead(200)
 		res.write(list)
 		res.end()
