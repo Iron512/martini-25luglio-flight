@@ -6,7 +6,7 @@ var app = express()
 //{code:'',departureAirport:'',arrivalAirport:'',delay:}
 var flights = [
 			{code:'SQ388',departureAirport:'MXP',arrivalAirport:'JFK',delay:37},
-			{code:'UA928',departureAirport:'JAL',arrivalAirport:'EGS',delay:53}
+			{code:'UA928',departureAirport:'JAL',arrivalAirport:'EGS',delay:53},
 			{code:'GV473',departureAirport:'RBJ',arrivalAirport:'VRE',delay:21}
 			]
 
